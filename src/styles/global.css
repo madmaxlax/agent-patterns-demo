@@ -29,7 +29,10 @@ html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: u
 
 button:focus-visible, .scroller:focus-visible, a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 
-.scroller { overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(180deg, #10172b, var(--bg)); }
+.scroll-wrap { position: relative; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: linear-gradient(180deg, #10172b, var(--bg)); }
+.scroller { overflow-x: auto; }
+.playhead { position: absolute; top: 36px; bottom: 0; width: 2px; pointer-events: none; z-index: 4;
+  background: linear-gradient(180deg, transparent, #ffffff55 15%, #ffffff55 85%, transparent); }
 .scroller { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
 .scroller::-webkit-scrollbar { height: 8px; }
 .scroller::-webkit-scrollbar-track { background: transparent; margin: 0 16px; }
@@ -48,10 +51,12 @@ button:focus-visible, .scroller:focus-visible, a:focus-visible { outline: 3px so
 .rail { position: absolute; top: 58%; height: 3px; transform: translateY(-50%);
   background: linear-gradient(90deg, transparent, var(--c) 8%, var(--c) 92%, transparent); box-shadow: 0 0 16px var(--c); opacity: 0.6; }
 
+.rail--lit { opacity: 1; z-index: 0; }
 .marker { position: absolute; top: 58%; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; border: 3px solid var(--c);
   background: var(--bg); cursor: pointer; padding: 0; transition: box-shadow 0.15s; }
 .marker::before { content: ''; position: absolute; inset: -12px; }
 .marker:hover { box-shadow: 0 0 0 6px color-mix(in srgb, var(--c) 30%, transparent); }
+.marker--passed { background: color-mix(in srgb, var(--c) 55%, var(--bg)); }
 .marker--active { background: var(--c); box-shadow: 0 0 0 7px color-mix(in srgb, var(--c) 35%, transparent), 0 0 24px var(--c); }
 .marker-year { position: absolute; top: 28px; left: 50%; transform: translateX(-50%); font-size: 0.72rem; color: var(--muted); font-variant-numeric: tabular-nums; }
 .marker--active .marker-year { color: var(--ink); font-weight: 700; }
@@ -71,7 +76,7 @@ button:focus-visible, .scroller:focus-visible, a:focus-visible { outline: 3px so
   .app { padding: 20px 12px 32px; }
   .lede { font-size: 0.95rem; }
   .toggle { padding: 10px 14px; flex: 1 1 auto; justify-content: center; }
-  .scroller { border-radius: 12px; border-left: 0; border-right: 0; margin: 0 -12px; }
+  .scroll-wrap { border-radius: 12px; border-left: 0; border-right: 0; margin: 0 -12px; }
   .detail { min-height: 0; }
   .card { padding: 14px 16px; }
   .card h2 { font-size: 1.2rem; }
