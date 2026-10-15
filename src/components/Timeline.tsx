@@ -15,11 +15,14 @@ const GUTTER = 32
 const PAD = 60
 // Where the playhead sits across the visible timeline. Markers it has passed light up.
 const PLAYHEAD = 0.4
+// Markers that share a year get their own scroll stop this many pixels apart.
+const TIE_PX = 10
 
 export function Timeline() {
   const reduce = useReducedMotion()
   const [hidden, setHidden] = useState<Set<Brand>>(new Set())
-  const [selected, setSelected] = useState<TimelineEvent>(events[0])
+  // Set by a click or keyboard focus. Cleared the next time the user scrolls.
+  const [pinned, setPinned] = useState<TimelineEvent | null>(null)
   const scroller = useRef<HTMLDivElement>(null)
   const programmatic = useRef(false)
   const [view, setView] = useState({ left: 0, width: 0 })
@@ -36,14 +39,40 @@ export function Timeline() {
   const x = (year: number) => PAD + (year - minYear) * PX_PER_YEAR
   const ticks = Array.from({ length: (maxYear - minYear) / 5 + 1 }, (_, i) => minYear + i * 5)
   const visibleBrands = BRANDS.filter((b) => !hidden.has(b.id))
-  // Extra room on the right so the last markers can scroll all the way to the playhead.
+  const baseX = (e: TimelineEvent) => GUTTER + x(e.year)
+  const ordered = useMemo(
+    () =>
+      [...events].sort(
+        (a, b) => a.year - b.year || BRANDS.findIndex((br) => br.id === a.brand) - BRANDS.findIndex((br) => br.id === b.brand),
+      ),
+    [],
+  )
+  // Room on the left so the playhead sits exactly on the first marker at scroll position zero.
+  const startSpace = Math.max(0, view.width * PLAYHEAD - baseX(ordered[0]))
+  // Room on the right so the last marker can scroll all the way to the playhead.
   const endSpace = view.width * (1 - PLAYHEAD)
-  const markerX = (e: TimelineEvent) => GUTTER + x(e.year)
+  const railLeft = startSpace + GUTTER
+  const markerX = (e: TimelineEvent) => startSpace + baseX(e)
   const playheadX = view.left + view.width * PLAYHEAD
+
+  // Scroll stop for each shown marker. Same-year markers get consecutive stops so each is reachable.
+  const trigger = useMemo(() => {
+    const stops = new Map<string, number>()
+    const seen = new Map<number, number>()
+    for (const e of ordered) {
+      if (hidden.has(e.brand)) continue
+      const n = seen.get(e.year) ?? 0
+      seen.set(e.year, n + 1)
+      stops.set(e.id, startSpace + GUTTER + PAD + (e.year - minYear) * PX_PER_YEAR + n * TIE_PX)
+    }
+    return stops
+  }, [ordered, hidden, startSpace, minYear])
 
   const sync = useCallback(() => {
     const el = scroller.current
-    if (el) setView({ left: el.scrollLeft, width: el.clientWidth })
+    if (!el) return
+    setView({ left: el.scrollLeft, width: el.clientWidth })
+    if (!programmatic.current) setPinned(null)
   }, [])
 
   useEffect(() => {
@@ -55,21 +84,15 @@ export function Timeline() {
     return () => ro.disconnect()
   }, [sync])
 
-  // Scrolling moves the selection to the last visible marker the playhead has passed.
-  useEffect(() => {
-    if (programmatic.current || view.width === 0) return
-    const shown = events
-      .filter((e) => !hidden.has(e.brand))
-      .sort((a, b) => a.year - b.year)
-    if (shown.length === 0) return
-    const passed = shown.filter((e) => markerX(e) <= playheadX)
-    const next = passed.length ? passed[passed.length - 1] : shown[0]
-    setSelected((cur) => (cur.id === next.id ? cur : next))
-  }, [playheadX, hidden, view.width])
+  // The playhead picks the last shown marker it has passed. The first marker wins before any scrolling.
+  const shown = ordered.filter((e) => !hidden.has(e.brand))
+  const passed = shown.filter((e) => trigger.get(e.id)! <= playheadX + 1)
+  const fromScroll = passed[passed.length - 1] ?? shown[0] ?? ordered[0]
+  const selected = pinned && !hidden.has(pinned.brand) ? pinned : fromScroll
 
   const goTo = (e: TimelineEvent) => {
     const el = scroller.current
-    setSelected(e)
+    setPinned(e)
     if (!el) return
     programmatic.current = true
     const release = () => {
@@ -78,7 +101,7 @@ export function Timeline() {
     }
     el.addEventListener('scrollend', release)
     window.setTimeout(release, 900) // fallback where scrollend is unsupported
-    el.scrollTo({ left: markerX(e) - el.clientWidth * PLAYHEAD, behavior: reduce ? 'auto' : 'smooth' })
+    el.scrollTo({ left: (trigger.get(e.id) ?? markerX(e)) - el.clientWidth * PLAYHEAD, behavior: reduce ? 'auto' : 'smooth' })
   }
 
   const toggle = (id: Brand) =>
@@ -108,8 +131,8 @@ export function Timeline() {
 
       <div className="scroll-wrap">
       <div className="scroller" ref={scroller} onScroll={sync} tabIndex={0} aria-label="Scrollable timeline">
-        <div className="canvas" style={{ width: width + GUTTER + endSpace }}>
-          <div className="axis" style={{ marginLeft: GUTTER }}>
+        <div className="canvas" style={{ width: railLeft + width + endSpace }}>
+          <div className="axis" style={{ marginLeft: railLeft }}>
             {ticks.map((t) => (
               <span key={t} className="tick" style={{ left: x(t) }}>
                 {t}
@@ -120,13 +143,13 @@ export function Timeline() {
           {visibleBrands.map((b) => (
             <div key={b.id} className={`lane lane--${b.id}`} style={{ height: LANE_HEIGHT }}>
               <div className="lane-label">{b.label}</div>
-              <div className="rail" style={{ left: GUTTER, width }} />
-              <div className="rail rail--lit" style={{ left: GUTTER, width: Math.max(0, Math.min(width, playheadX - GUTTER)) }} />
+              <div className="rail" style={{ left: railLeft, width }} />
+              <div className="rail rail--lit" style={{ left: railLeft, width: Math.max(0, Math.min(width, playheadX - railLeft)) }} />
               {events
                 .filter((e) => e.brand === b.id)
                 .map((e, i) => {
                   const active = selected.id === e.id
-                  const passed = markerX(e) <= playheadX
+                  const passed = (trigger.get(e.id) ?? markerX(e)) <= playheadX + 1
                   return (
                     <motion.button
                       key={e.id}
