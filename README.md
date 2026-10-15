@@ -34,7 +34,7 @@ Then paste the prompt from `demos/01-subagents/README.md`.
 
 ## Cost note
 
-Demo 1 is cheap. Demo 2 runs four full sessions and costs several times more. Run it once.
+Demo 1 is cheap. Demo 2 runs five full sessions and costs several times more. Run it once.
 
 ## Keeping context files current
 

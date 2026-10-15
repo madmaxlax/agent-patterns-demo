@@ -18,7 +18,9 @@ Design brief:
 - Horizontal scroll with the axis pinned. Milestones are markers that expand into a detail card on hover or click, showing title, summary, year, and a source link.
 - Brand toggles to show or hide a lane.
 - Smooth motion on entry and on card expand. Respect `prefers-reduced-motion`.
-- Responsive down to phone width. Keyboard accessible markers with visible focus.
+- Mobile first. It must work at 390px wide with no horizontal page scroll and touch targets of at least 44px.
+- Style every scrollbar to match the theme. Never leave the default browser scrollbar on the timeline.
+- Keyboard accessible markers with visible focus.
 - It should look striking in a screen share. Avoid generic template styling.
 
-If the data shape is not what the contract says, message the data curator instead of editing their file. When done, message the QA reviewer.
+If the data shape is not what the contract says, message the data curator instead of editing their file. When done, message the design reviewer and the QA reviewer. Fix the design reviewer's defects before you call the work finished.
