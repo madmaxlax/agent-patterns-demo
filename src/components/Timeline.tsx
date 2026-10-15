@@ -11,7 +11,7 @@ const BRANDS: { id: Brand; label: string }[] = [
 ]
 const PX_PER_YEAR = 34
 const LANE_HEIGHT = 120
-const GUTTER = 120
+const GUTTER = 32
 const PAD = 60
 
 export function Timeline() {

@@ -30,6 +30,11 @@ html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: u
 button:focus-visible, .scroller:focus-visible, a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 
 .scroller { overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(180deg, #10172b, var(--bg)); }
+.scroller { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+.scroller::-webkit-scrollbar { height: 8px; }
+.scroller::-webkit-scrollbar-track { background: transparent; margin: 0 16px; }
+.scroller::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
+.scroller::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 .canvas { position: relative; padding-bottom: 12px; }
 .axis { position: sticky; top: 0; height: 36px; z-index: 3; border-bottom: 1px solid var(--line); background: #10172bee; }
 .tick { position: absolute; top: 8px; transform: translateX(-50%); font-size: 0.78rem; color: var(--muted); font-variant-numeric: tabular-nums; }
@@ -38,13 +43,14 @@ button:focus-visible, .scroller:focus-visible, a:focus-visible { outline: 3px so
 .lane { position: relative; --c: var(--visa); }
 .lane--mastercard { --c: var(--mastercard); }
 .lane--discover { --c: var(--discover); }
-.lane-label { position: sticky; left: 0; z-index: 2; width: 120px; height: 100%; display: flex; align-items: center; padding-left: 16px;
-  font-weight: 700; color: var(--c); background: linear-gradient(90deg, #10172b 70%, transparent); }
-.rail { position: absolute; top: 50%; height: 3px; transform: translateY(-50%);
+.lane-label { position: sticky; left: 16px; z-index: 2; display: inline-block; margin: 10px 0 0 16px; padding: 3px 12px; border-radius: 999px;
+  font-size: 0.8rem; font-weight: 700; color: var(--c); background: color-mix(in srgb, var(--c) 18%, #10172b); }
+.rail { position: absolute; top: 58%; height: 3px; transform: translateY(-50%);
   background: linear-gradient(90deg, transparent, var(--c) 8%, var(--c) 92%, transparent); box-shadow: 0 0 16px var(--c); opacity: 0.6; }
 
-.marker { position: absolute; top: 50%; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; border: 3px solid var(--c);
+.marker { position: absolute; top: 58%; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; border: 3px solid var(--c);
   background: var(--bg); cursor: pointer; padding: 0; transition: box-shadow 0.15s; }
+.marker::before { content: ''; position: absolute; inset: -12px; }
 .marker:hover { box-shadow: 0 0 0 6px color-mix(in srgb, var(--c) 30%, transparent); }
 .marker--active { background: var(--c); box-shadow: 0 0 0 7px color-mix(in srgb, var(--c) 35%, transparent), 0 0 24px var(--c); }
 .marker-year { position: absolute; top: 28px; left: 50%; transform: translateX(-50%); font-size: 0.72rem; color: var(--muted); font-variant-numeric: tabular-nums; }
@@ -62,8 +68,13 @@ button:focus-visible, .scroller:focus-visible, a:focus-visible { outline: 3px so
 .card a { color: var(--c); }
 
 @media (max-width: 600px) {
-  .app { padding: 20px 16px 32px; }
-  .lane-label { width: 96px; font-size: 0.85rem; }
+  .app { padding: 20px 12px 32px; }
+  .lede { font-size: 0.95rem; }
+  .toggle { padding: 10px 14px; flex: 1 1 auto; justify-content: center; }
+  .scroller { border-radius: 12px; border-left: 0; border-right: 0; margin: 0 -12px; }
+  .detail { min-height: 0; }
+  .card { padding: 14px 16px; }
+  .card h2 { font-size: 1.2rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
