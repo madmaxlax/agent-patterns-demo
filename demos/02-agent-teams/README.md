@@ -16,7 +16,9 @@ The five teammates are the subagent definitions in `.claude/agents/`. Each owns 
 | `timeline-data-curator` | `src/data/` | `src/types.ts` |
 | `timeline-designer` | `src/components/`, `src/styles/` | the scaffold |
 | `timeline-qa-reviewer` | nothing, read-only. Build, types, data, code. | designer and curator |
-| `timeline-design-reviewer` | nothing, read-only. Screenshots at desktop and phone width, scrollbars, contrast. | designer |
+| `design-reviewer` | nothing, read-only. A generic, reusable agent. It screenshots at desktop and phone width and checks scrollbars and contrast. | designer |
+
+The first four are specific to this build. `design-reviewer` is not. It works for any web UI, so copy it into your own projects. It also runs as a plain subagent.
 
 ## Prompt
 
@@ -25,9 +27,11 @@ Create an agent team to build a Vite React TypeScript page with a visual,
 interactive history timeline of Visa, Mastercard, and Discover. Use the
 data in data/timeline.json. Spawn five teammates from these agent types:
 timeline-architect, timeline-data-curator, timeline-designer,
-timeline-qa-reviewer, and timeline-design-reviewer. Name them architect,
+timeline-qa-reviewer, and design-reviewer. Name them architect,
 curator, designer, qa, and design. Make the architect go first. Have qa
-and design send defects straight to the owner.
+and design send defects straight to the owner. Tell design to review
+the built app at http://localhost:4173 against the brief in the designer's
+agent file.
 Wait for the teammates to finish before you summarize.
 ```
 

@@ -8,7 +8,7 @@ Pattern comparison and the rule of thumb: `docs/comparison.md`.
 
 | Path | What it is |
 | --- | --- |
-| `.claude/agents/` | `history-researcher` for subagents. Five `timeline-*` roles reused as team teammates. |
+| `.claude/agents/` | `history-researcher` for subagents. Four `timeline-*` roles reused as team teammates, plus the reusable `design-reviewer`. |
 | `.claude/settings.json` | Turns on experimental agent teams for this repo. |
 | `.claude/skills/keep-agentsmd-and-claudemd-updated/` | Run `/keep-agentsmd-and-claudemd-updated` after meaningful work. |
 | `.github/agents/` | VS Code Copilot custom agents, `*.agent.md`. |

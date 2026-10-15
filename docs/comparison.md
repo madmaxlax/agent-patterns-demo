@@ -22,7 +22,7 @@ To tell them apart, ask who the agent reports to.
 | Concept | Files | Demo |
 | --- | --- | --- |
 | Subagent | `.claude/agents/history-researcher.md` | [01](../demos/01-subagents/README.md) |
-| Team of agents | the five `timeline-*.md` files in `.claude/agents/` | [02](../demos/02-agent-teams/README.md) |
+| Team of agents | the four `timeline-*.md` files and `design-reviewer.md` in `.claude/agents/` | [02](../demos/02-agent-teams/README.md) |
 | Custom agent | `.github/agents/*.agent.md` | [03](../demos/03-custom-agents/README.md) |
 
 ## When to use which

@@ -13,7 +13,7 @@ Side-by-side comparison: [docs/comparison.md](docs/comparison.md).
 ## Branches
 
 - `main` is the starting point. Agents, settings, and prompts, with no app.
-- `solution` is one possible result. It adds the finished Vite and React timeline app.
+- `solution` is one possible result. It adds the finished Vite and React timeline app. Live at https://madmaxlax.github.io/agent-patterns-demo/, deployed by GitHub Actions on every push to `solution`.
 
 ## Prerequisites
 
