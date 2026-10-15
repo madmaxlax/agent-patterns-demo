@@ -1,0 +1,70 @@
+:root {
+  --bg: #0b1020;
+  --panel: #131a30;
+  --ink: #eef1fb;
+  --muted: #9aa5c7;
+  --line: #26304f;
+  --visa: #3b6df0;
+  --mastercard: #f2563d;
+  --discover: #ff9b2f;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; }
+
+.app { min-height: 100vh; padding: 32px 16px 48px; max-width: 1200px; margin: 0 auto; }
+.hero h1 { margin: 4px 0 8px; font-size: clamp(2rem, 5vw, 3.4rem); letter-spacing: -0.02em; line-height: 1.05;
+  background: linear-gradient(90deg, var(--visa), var(--mastercard) 55%, var(--discover)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.eyebrow { margin: 0; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.75rem; color: var(--muted); }
+.lede { margin: 0 0 24px; color: var(--muted); max-width: 60ch; }
+
+.toggles { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.toggle { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--panel); color: var(--ink); font: inherit; cursor: pointer; }
+.toggle[aria-pressed='false'] { opacity: 0.45; }
+.toggle .dot { width: 10px; height: 10px; border-radius: 50%; background: currentColor; }
+.toggle--visa .dot { background: var(--visa); }
+.toggle--mastercard .dot { background: var(--mastercard); }
+.toggle--discover .dot { background: var(--discover); }
+
+button:focus-visible, .scroller:focus-visible, a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+
+.scroller { overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(180deg, #10172b, var(--bg)); }
+.canvas { position: relative; padding-bottom: 12px; }
+.axis { position: sticky; top: 0; height: 36px; z-index: 3; border-bottom: 1px solid var(--line); background: #10172bee; }
+.tick { position: absolute; top: 8px; transform: translateX(-50%); font-size: 0.78rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.tick::after { content: ''; position: absolute; left: 50%; top: 22px; width: 1px; height: 8px; background: var(--line); }
+
+.lane { position: relative; --c: var(--visa); }
+.lane--mastercard { --c: var(--mastercard); }
+.lane--discover { --c: var(--discover); }
+.lane-label { position: sticky; left: 0; z-index: 2; width: 120px; height: 100%; display: flex; align-items: center; padding-left: 16px;
+  font-weight: 700; color: var(--c); background: linear-gradient(90deg, #10172b 70%, transparent); }
+.rail { position: absolute; top: 50%; height: 3px; transform: translateY(-50%);
+  background: linear-gradient(90deg, transparent, var(--c) 8%, var(--c) 92%, transparent); box-shadow: 0 0 16px var(--c); opacity: 0.6; }
+
+.marker { position: absolute; top: 50%; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; border: 3px solid var(--c);
+  background: var(--bg); cursor: pointer; padding: 0; transition: box-shadow 0.15s; }
+.marker:hover { box-shadow: 0 0 0 6px color-mix(in srgb, var(--c) 30%, transparent); }
+.marker--active { background: var(--c); box-shadow: 0 0 0 7px color-mix(in srgb, var(--c) 35%, transparent), 0 0 24px var(--c); }
+.marker-year { position: absolute; top: 28px; left: 50%; transform: translateX(-50%); font-size: 0.72rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.marker--active .marker-year { color: var(--ink); font-weight: 700; }
+.empty { padding: 32px 16px; color: var(--muted); margin: 0; }
+
+.detail { margin-top: 16px; min-height: 190px; }
+.card { --c: var(--visa); background: var(--panel); border: 1px solid var(--line); border-left: 6px solid var(--c); border-radius: 14px; padding: 18px 20px; }
+.card--mastercard { --c: var(--mastercard); }
+.card--discover { --c: var(--discover); }
+.card h2 { margin: 4px 0 8px; font-size: 1.4rem; }
+.card p { margin: 0 0 10px; line-height: 1.5; }
+.card-meta { display: flex; gap: 12px; align-items: baseline; color: var(--muted); font-size: 0.85rem; }
+.card-year { font-size: 1.6rem; font-weight: 800; color: var(--c); font-variant-numeric: tabular-nums; }
+.card a { color: var(--c); }
+
+@media (max-width: 600px) {
+  .app { padding: 20px 16px 32px; }
+  .lane-label { width: 96px; font-size: 0.85rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

@@ -13,6 +13,7 @@ Pattern comparison and the rule of thumb: `docs/comparison.md`.
 | `.claude/skills/keep-agentsmd-and-claudemd-updated/` | Run `/keep-agentsmd-and-claudemd-updated` after meaningful work. |
 | `.github/agents/` | VS Code Copilot custom agents, `*.agent.md`. |
 | `demos/01-subagents/`, `demos/02-agent-teams/`, `demos/03-custom-agents/` | Prompt and talking points per demo. |
+| `src/`, `index.html`, `package.json` | The Vite + React + TypeScript timeline app (`npm install`, `npm run dev`). Components in `src/components/`, data in `src/data/timeline.json`. |
 | `data/timeline.json` | 28 sourced events from a parallel research run. Demo 1 regenerates it. |
 
 ## Branches
@@ -29,4 +30,4 @@ Pattern comparison and the rule of thumb: `docs/comparison.md`.
 
 ## Current focus (2026-10-14)
 
-Initial build of `main` is done. Next is the `solution` branch with the Vite app.
+Both branches are built. The app uses Vite 8, React 19, and motion. Next is publishing to GitHub.
