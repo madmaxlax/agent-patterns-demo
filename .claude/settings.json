@@ -7,7 +7,9 @@
       "Bash(npm install)",
       "Bash(npm run build)",
       "Bash(npm run dev)",
-      "Bash(npx tsc --noEmit)"
+      "Bash(npx tsc --noEmit)",
+      "Bash(npx vite preview *)",
+      "Bash(npx playwright *)"
     ]
   }
 }

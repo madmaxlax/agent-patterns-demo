@@ -8,32 +8,34 @@ Optional: `claude --teammate-mode auto` inside tmux or iTerm2 gives one pane per
 
 ## Roles
 
-The four teammates are the subagent definitions in `.claude/agents/`. Each owns separate files, so nobody overwrites anybody.
+The five teammates are the subagent definitions in `.claude/agents/`. Each owns separate files, so nobody overwrites anybody.
 
 | Teammate | Owns | Blocked on |
 | --- | --- | --- |
 | `timeline-architect` | `package.json`, `vite.config.ts`, `src/main.tsx`, `src/App.tsx`, `src/types.ts` | nothing |
 | `timeline-data-curator` | `src/data/` | `src/types.ts` |
 | `timeline-designer` | `src/components/`, `src/styles/` | the scaffold |
-| `timeline-qa-reviewer` | nothing, read-only | designer and curator |
+| `timeline-qa-reviewer` | nothing, read-only. Build, types, data, code. | designer and curator |
+| `timeline-design-reviewer` | nothing, read-only. Screenshots at desktop and phone width, scrollbars, contrast. | designer |
 
 ## Prompt
 
 ```text
 Create an agent team to build a Vite React TypeScript page with a visual,
 interactive history timeline of Visa, Mastercard, and Discover. Use the
-data in data/timeline.json. Spawn four teammates from these agent types:
-timeline-architect, timeline-data-curator, timeline-designer, and
-timeline-qa-reviewer. Name them architect, curator, designer, and qa.
-Make the architect go first. Have qa send defects straight to the owner.
+data in data/timeline.json. Spawn five teammates from these agent types:
+timeline-architect, timeline-data-curator, timeline-designer,
+timeline-qa-reviewer, and timeline-design-reviewer. Name them architect,
+curator, designer, qa, and design. Make the architect go first. Have qa
+and design send defects straight to the owner.
 Wait for the teammates to finish before you summarize.
 ```
 
 ## What to point at
 
-1. The agent panel lists four teammates. Arrow keys and Enter open any teammate's transcript.
+1. The agent panel lists five teammates. Arrow keys and Enter open any teammate's transcript.
 2. Press Ctrl+T for the shared task list. Dependencies keep the designer waiting until the architect finishes.
-3. Watch `qa` message the designer or curator directly. In demo 1, subagents only reported to the parent.
+3. Watch `qa` and `design` message the designer or curator directly. `design` screenshots the app at phone width and catches ugly default scrollbars and cramped mobile layout. In demo 1, subagents only reported to the parent.
 4. Message a teammate yourself without going through the lead.
 
 ## Run it
