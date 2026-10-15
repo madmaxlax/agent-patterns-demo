@@ -1,0 +1,198 @@
+[
+  {
+    "brand": "visa",
+    "year": 1958,
+    "title": "Bank of America launches BankAmericard",
+    "summary": "Bank of America introduced BankAmericard in Fresno, California, with a mass mailing of about 65,000 unsolicited cards. It was the first general-purpose consumer credit card.",
+    "source": "https://en.wikipedia.org/wiki/Visa_Inc."
+  },
+  {
+    "brand": "mastercard",
+    "year": 1966,
+    "title": "Interbank Card Association formed",
+    "summary": "Regional bank card associations joined to create Interbank, a bank-owned rival to BankAmericard. Marine Midland Bank's Karl Hinke led the Buffalo-based effort.",
+    "source": "https://en.wikipedia.org/wiki/Mastercard"
+  },
+  {
+    "brand": "mastercard",
+    "year": 1969,
+    "title": "Master Charge brand launched",
+    "summary": "The network took the name Master Charge: The Interbank Card. It adopted the overlapping red and yellow circles after First National Bank of California joined.",
+    "source": "https://einvestingforbeginners.com/the-history-of-mastercard-daah/"
+  },
+  {
+    "brand": "visa",
+    "year": 1970,
+    "title": "National BankAmericard Inc. formed",
+    "summary": "Bank of America gave up control of the program, and issuing banks set up National BankAmericard Inc. with Dee Hock as president and CEO.",
+    "source": "https://en.wikipedia.org/wiki/Visa_Inc."
+  },
+  {
+    "brand": "visa",
+    "year": 1973,
+    "title": "First electronic authorization system",
+    "summary": "National BankAmericard launched the first electronic authorization system, followed by electronic clearing and settlement.",
+    "source": "https://africa.visa.com/about-visa/our_business/history-of-visa.html"
+  },
+  {
+    "brand": "visa",
+    "year": 1976,
+    "title": "BankAmericard becomes Visa",
+    "summary": "BankAmericard and its licensees such as Barclaycard and Carte Bleue adopted the single name Visa, which sounds the same in every language.",
+    "source": "https://africa.visa.com/about-visa/our_business/history-of-visa.html"
+  },
+  {
+    "brand": "mastercard",
+    "year": 1979,
+    "title": "Renamed MasterCard",
+    "summary": "Master Charge was renamed MasterCard, dropping the Interbank name.",
+    "source": "https://en.wikipedia.org/wiki/Mastercard"
+  },
+  {
+    "brand": "visa",
+    "year": 1983,
+    "title": "Global ATM network launches",
+    "summary": "Visa launched an ATM network giving cardholders round-the-clock cash access worldwide.",
+    "source": "https://africa.visa.com/about-visa/our_business/history-of-visa.html"
+  },
+  {
+    "brand": "discover",
+    "year": 1985,
+    "title": "Sears launches the Discover Card",
+    "summary": "Sears introduced the Discover Card in a 1985 trial, with the first purchase on September 17 at an Atlanta Sears. It had no annual fee and offered cash back, and the national rollout followed in 1986.",
+    "source": "https://en.wikipedia.org/wiki/Discover_Card"
+  },
+  {
+    "brand": "mastercard",
+    "year": 1991,
+    "title": "Maestro debit network launched",
+    "summary": "MasterCard and Europay International partnered to launch Maestro, a global point-of-sale debit network.",
+    "source": "https://einvestingforbeginners.com/the-history-of-mastercard-daah/"
+  },
+  {
+    "brand": "discover",
+    "year": 1993,
+    "title": "Sears spins off Dean Witter, Discover & Co.",
+    "summary": "Sears spun off its financial services unit, which included the Discover Card business, as a public company named Dean Witter, Discover & Co.",
+    "source": "https://en.wikipedia.org/wiki/Discover_Financial_Services"
+  },
+  {
+    "brand": "visa",
+    "year": 1995,
+    "title": "Visa check card and EMV specifications",
+    "summary": "Visa introduced its check card (debit) and co-created the EMV chip card specifications for interoperability.",
+    "source": "https://africa.visa.com/about-visa/our_business/history-of-visa.html"
+  },
+  {
+    "brand": "discover",
+    "year": 1997,
+    "title": "Merger with Morgan Stanley",
+    "summary": "Dean Witter, Discover & Co. merged with Morgan Stanley. The combined firm was called Morgan Stanley Dean Witter, Discover & Co., and Discover was part of Morgan Stanley until 2007.",
+    "source": "https://en.wikipedia.org/wiki/Discover_Financial_Services"
+  },
+  {
+    "brand": "mastercard",
+    "year": 2002,
+    "title": "Merger with Europay International",
+    "summary": "MasterCard International merged with Europay International and became a Delaware corporation.",
+    "source": "https://en.wikipedia.org/wiki/Mastercard"
+  },
+  {
+    "brand": "discover",
+    "year": 2005,
+    "title": "Acquisition of the PULSE network",
+    "summary": "Discover bought the PULSE interbank debit network for about $311 million. This began its build-out as a payments network as well as a card issuer.",
+    "source": "https://en.wikipedia.org/wiki/Discover_Financial_Services"
+  },
+  {
+    "brand": "mastercard",
+    "year": 2006,
+    "title": "IPO on the NYSE",
+    "summary": "MasterCard went public on 25 May 2006 at $39 per share under the ticker MA. It had previously been owned by its member banks.",
+    "source": "https://en.wikipedia.org/wiki/Mastercard"
+  },
+  {
+    "brand": "discover",
+    "year": 2007,
+    "title": "Spin-off from Morgan Stanley",
+    "summary": "Morgan Stanley completed the spin-off of Discover, which became an independent public company named Discover Financial Services.",
+    "source": "https://en.wikipedia.org/wiki/Discover_Financial_Services"
+  },
+  {
+    "brand": "visa",
+    "year": 2007,
+    "title": "Global restructuring into Visa Inc.",
+    "summary": "Regional Visa businesses were merged into a single corporation, Visa Inc., in preparation for going public. Visa Europe stayed separate and member-owned.",
+    "source": "https://en.wikipedia.org/wiki/Visa_Inc."
+  },
+  {
+    "brand": "discover",
+    "year": 2008,
+    "title": "Antitrust settlement and Diners Club purchase",
+    "summary": "Discover received a $2.75 billion settlement from Visa and Mastercard in its antitrust case. It also acquired Diners Club International from Citigroup for about $165 million.",
+    "source": "https://en.wikipedia.org/wiki/Discover_Card"
+  },
+  {
+    "brand": "visa",
+    "year": 2008,
+    "title": "Record IPO",
+    "summary": "Visa went public on March 18, raising $17.9 billion, later about $19.1 billion with the overallotment. It was then the largest IPO in U.S. history.",
+    "source": "https://en.wikipedia.org/wiki/Visa_Inc."
+  },
+  {
+    "brand": "discover",
+    "year": 2010,
+    "title": "Student Loan Corporation acquisition",
+    "summary": "Discover acquired Citigroup's Student Loan Corporation, which expanded its student lending business. The deal was finalized in December 2010.",
+    "source": "https://en.wikipedia.org/wiki/Discover_Financial_Services"
+  },
+  {
+    "brand": "mastercard",
+    "year": 2016,
+    "title": "VocaLink acquisition and rebrand",
+    "summary": "Mastercard bought UK payments infrastructure firm VocaLink for about $920M. The same year it adopted the \"Mastercard\" spelling with a new logo.",
+    "source": "https://en.wikipedia.org/wiki/Mastercard"
+  },
+  {
+    "brand": "visa",
+    "year": 2016,
+    "title": "Visa Europe acquired",
+    "summary": "Visa Inc. completed its acquisition of Visa Europe on June 21 and reunified its operations globally.",
+    "source": "https://africa.visa.com/about-visa/our_business/history-of-visa.html"
+  },
+  {
+    "brand": "mastercard",
+    "year": 2019,
+    "title": "EU interchange fine and wordmark-free logo",
+    "summary": "The European Commission fined Mastercard EUR 570.5M for interchange fee violations. The same year Mastercard removed text from its logo, leaving only the overlapping circles.",
+    "source": "https://en.wikipedia.org/wiki/Mastercard"
+  },
+  {
+    "brand": "visa",
+    "year": 2021,
+    "title": "Plaid acquisition abandoned",
+    "summary": "The US Department of Justice challenged Visa's planned $5.3 billion purchase of Plaid. Visa and Plaid abandoned the deal in January 2021.",
+    "source": "https://en.wikipedia.org/wiki/Visa_Inc."
+  },
+  {
+    "brand": "discover",
+    "year": 2024,
+    "title": "Capital One announces $35.3 billion deal",
+    "summary": "On February 19, 2024, Capital One announced an all-stock acquisition of Discover valued at about $35.3 billion. Shareholders of both companies approved it on February 18, 2025.",
+    "source": "https://en.wikipedia.org/wiki/Discover_Financial_Services"
+  },
+  {
+    "brand": "mastercard",
+    "year": 2024,
+    "title": "Recorded Future acquisition",
+    "summary": "Mastercard acquired threat-intelligence firm Recorded Future for about $2.65B, a major move into cybersecurity.",
+    "source": "https://en.wikipedia.org/wiki/Mastercard"
+  },
+  {
+    "brand": "discover",
+    "year": 2025,
+    "title": "Capital One closes the Discover acquisition",
+    "summary": "After approval from the Federal Reserve and the OCC in April 2025, Capital One closed the deal on May 18, 2025. It said Discover-branded cards would continue, along with the PULSE and Diners Club networks.",
+    "source": "https://thepaypers.com/payments-general/capital-one-acquires-discover--1273664"
+  }
+]
